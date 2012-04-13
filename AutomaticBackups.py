@@ -1,3 +1,5 @@
+# Sublime Text 2 event listeners and commands interface for automatic backups.
+
 import sublime_plugin
 import os
 import shutil
@@ -5,7 +7,7 @@ import shutil
 import backups
 from backups_navigator import BackupsNavigator
 
-nav = BackupsNavigator()
+nav = BackupsNavigator()  # our backup navigator state manager
 
 
 class AutomaticBackupsEventListener(sublime_plugin.EventListener):
@@ -16,10 +18,9 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
 
     def on_post_save(self, view):
         """When a file is saved, put a copy of the file into the
-        backup directory"""
-
-        buffer_file_name = view.file_name()
-        newname = backups.backup_file_path(view)
+        backup directory."""
+        filename = view.file_name()
+        newname = backups.get_backup_filepath(filename)
         if newname == None:
             return
 
@@ -29,8 +30,8 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
         if os.access(backup_dir, os.F_OK) == False:
             os.makedirs(backup_dir)
 
+        shutil.copy(filename, newname)
         print 'Backup saved to:', newname
-        shutil.copy(buffer_file_name, newname)
 
         nav.reinit()
 
@@ -81,9 +82,7 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
                 nav.backup_full_path = os.path.join(nav.backup_path,
                         nav.backup)
 
-                print nav.backup_full_path
-
                 if command == 'merge':
                     nav.merge(self.view)
                 else:
-                    nav.buffer(self.view, edit)
+                    nav.load_backup_to_view(self.view, edit)
