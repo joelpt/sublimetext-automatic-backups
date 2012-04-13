@@ -25,7 +25,7 @@ That end bit is the timestamp, so you can see when the file was edited.
 
 To change where the backups are stored, access the plugin's settings in `Preferences->Package Settings->Automatic Backups`.
 
-To see if it's working, open the console with the `View->Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
+To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
     Backup saved to: d:/backups/C/autoexec-2008-03-22-22-22-46.bat
 
