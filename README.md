@@ -12,6 +12,9 @@ When you edit text files (scripts, prose, whatever) you often find yourself wish
  * Use `Cmd+Shift+P` or `Ctrl+Shift+P` then `Package Control: Install Package`.
  * Look for `Automatic Backups` and install it.
 
+If you prefer to install manually, install git, then:
+
+    git clone https://github.com/joelpt/sublimetext-automatic-backups "<Sublime Text 2 Packages folder>/Automatic Backups"
 
 ## Basic usage
 
