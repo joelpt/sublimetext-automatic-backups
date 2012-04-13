@@ -64,7 +64,7 @@ This code is available on [Github][0]. Pull requests are welcome.
 
 Created by [Joel Thornton][3].
 
-Originally authored for Sublime Text 1 by [SteveCooper][2].
+Originally authored for Sublime Text 1 by [Steve Cooper][2].
 
  [0]: https://github.com/joelpt/sublimetext-automatic-backups
  [1]: http://wbond.net/sublime_packages/package_control
