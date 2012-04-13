@@ -39,7 +39,7 @@ Automatic Backups supports easy navigation through the backup history for any fi
  * Press `Ctrl+Shift+Alt+[` to jump to the first copy in the history.
  * Press `Ctrl+Shift+Alt+]` to jump to the current version (that is, the actual file, not a backup).
 
-These commands can also be accessed via `Ctrl+Shift+P`.
+These commands can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 
 **Merge from backup history:**
@@ -48,7 +48,7 @@ When viewing a backup file via backup history navigation, press `Ctrl+Alt+Shift+
 
 You'll need to specify the command line for this merge tool; for more information go to `Preferences->Package Settings->Automatic Backups->Settings - Default`.
 
-This command can also be accessed via `Ctrl+Shift+P`.
+This command can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 
 **Credits**
