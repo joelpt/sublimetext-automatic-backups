@@ -7,7 +7,7 @@
     "backup_dir": "",
 
     // Files larger than this many bytes won't be backed up.
-    "max_backup_file_size_bytes": 65536, // = 64 KB
+    "max_backup_file_size_bytes": 131072, // = 128 KB
 
     // External command to execute when Merge command is used (Ctrl+Alt+Shift+M by default).
     "backup_merge_command": ""
