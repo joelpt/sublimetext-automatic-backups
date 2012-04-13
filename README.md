@@ -15,11 +15,11 @@ When you edit text files (scripts, prose, whatever) you often find yourself wish
 
 **Basic usage:**
 
-Once installed, any file you save will be automatically copied into your backups folder (defaults to `My Documents/Sublime Text Backups` on Windows and `~/sublime_backups` on Linux/OSX).
+Once installed, any file you save will be automatically copied into your backups folder (defaults to `My Documents\Sublime Text Backups` on Windows and `~/sublime_backups` on Linux/OSX).
 
-For example, if you change `C:/autoexec.bat` on Windows, you'll get a backup saved somewhere like:
+For example, if you change `C:\autoexec.bat` on Windows, you'll get a backup saved somewhere like:
 
-    C:/Users/yourUserName/Sublime Text Backups/C/autoexec-2008-03-22-22-22-46.bat
+    C:\Users\yourUserName\My Documents\Sublime Text Backups\C\autoexec-2008-03-22-22-22-46.bat
 
 That end bit is the timestamp, so you can see when the file was edited.
 
@@ -27,7 +27,7 @@ To change where the backups are stored, access the plugin's settings in `Prefere
 
 To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
-    Backup saved to: d:/backups/C/autoexec-2008-03-22-22-22-46.bat
+    Backup saved to: D:\backups\C\autoexec-2008-03-22-22-22-46.bat
 
 
 **Backup history navigation:**
