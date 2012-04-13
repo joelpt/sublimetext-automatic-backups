@@ -30,7 +30,7 @@ To change where the backups are stored, access the plugin's settings in `Prefere
 
 To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
-    Backup saved to: /home/stanislav/sublime-backup/etc/hosts-2012-03-22-22-22-46
+    Backup saved to: /home/stanislav/sublime-backups/etc/hosts-2012-03-22-22-22-46
 
 
 ## Backup history navigation
