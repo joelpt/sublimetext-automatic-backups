@@ -6,14 +6,14 @@ A Sublime Text 2 plugin to automatically save off a backup of your files each ti
 When you edit text files (scripts, prose, whatever) you often find yourself wishing for an older version. Ever accidentally deleted a chunk from an important configuration file, or wished you could roll back a document a few hours? This plugin takes a copy of every file you save and copies it into a backup directory structure, ensuring that you never lose an old version of a file.
 
 
-**Installation**
+## Installation
 
  * Install [Package Manager][1].
  * Use `Cmd+Shift+P` or `Ctrl+Shift+P` then `Package Control: Install Package`.
  * Look for `Automatic Backups` and install it.
 
 
-**Basic usage**
+## Basic usage
 
 Once installed, any file you save will be automatically copied into your backups folder (defaults to `My Documents\Sublime Text Backups` on Windows and `~/sublime_backups` on Linux/OSX).
 
@@ -30,7 +30,7 @@ To see if it's working, open the console with the `View->Show Console` menu item
     Backup saved to: D:\backups\C\autoexec-2008-03-22-22-22-46.bat
 
 
-**Backup history navigation**
+## Backup history navigation
 
 Automatic Backups supports easy navigation through the backup history for any file with stored backups. To use this feature:
 
@@ -42,7 +42,7 @@ Automatic Backups supports easy navigation through the backup history for any fi
 These commands can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 
-**Merge from backup history**
+## Merge from backup history
 
 When viewing a backup file via backup history navigation, press `Ctrl+Alt+Shift+M` to merge the backup version you're currently viewing with the latest version of the file using an external merge tool of your choosing.
 
@@ -51,14 +51,14 @@ You'll need to specify the command line for this merge tool; for more informatio
 This command can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 
-**Backup size considerations**
+## Backup size considerations
 
 Though this plugin currently has no facility for pruning old backups, this probably won't be a problem for you. I have been running some form of this plugin for 2.5 years, and have a total of 27000 individual backup files stored totalling just 400 MB uncompressed. And I can go back to the very first version of any file I've edited in Sublime Text.
 
 To prevent your backup folder from growing too large, check out the `max_backup_file_size_bytes` setting in `Preferences->Package Settings->Automatic Backups`.
 
 
-**Credits**
+## Credits
 
 This code is available on [Github][0]. Pull requests are welcome.
 
