@@ -41,7 +41,7 @@ Automatic Backups supports easy navigation through the backup history for any fi
 
 These commands can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
-Though this plugin currently has no facility for pruning old backups, this probably won't be a problem for you. I have been running some form of this plugin for 2.5 years, and have a total of 27000 backup files stored totalling just 400 MB uncompressed. And I can go back to the very first version of any file I've edited in Sublime Text.
+Though this plugin currently has no facility for pruning old backups, this probably won't be a problem for you. I have been running some form of this plugin for 2.5 years, and have a total of 27000 individual backup files stored totalling just 400 MB uncompressed. And I can go back to the very first version of any file I've edited in Sublime Text.
 
 
 **Merge from backup history:**
