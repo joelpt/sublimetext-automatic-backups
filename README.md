@@ -62,11 +62,13 @@ To prevent your backup folder from growing too large, check out the `max_backup_
 
 This code is available on [Github][0]. Pull requests are welcome.
 
-Created by Joel Thornton <sublime@joelpt.net>, originally authored for Sublime Text 1 by SteveCooper
+Created by [Joel Thornton][3].
+
+Originally authored for Sublime Text 1 by [SteveCooper][2].
 
  [0]: https://github.com/joelpt/sublimetext-automatic-backups
  [1]: http://wbond.net/sublime_packages/package_control
-
-
+ [2]: http://stevecooper.org/
+ [3]: mailto:sublime@joelpt.net
 
 
