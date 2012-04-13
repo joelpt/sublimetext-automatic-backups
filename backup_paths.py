@@ -1,4 +1,4 @@
-# Carries out automatic backup operations.
+# Helper functions for building backup file paths.
 
 import sublime
 import os
@@ -7,6 +7,8 @@ import datetime
 
 import win32helpers
 
+settings = sublime.load_settings('AutomaticBackups.sublime-settings')
+
 
 def get_base_dir():
     """Returns the base dir for where we should store backups.
@@ -14,7 +16,6 @@ def get_base_dir():
     based on the user's OS."""
 
     # Configured setting
-    settings = sublime.load_settings('AutomaticBackups.sublime-settings')
     backup_dir = settings.get('backup_dir', '')
     if backup_dir != '':
         return os.path.expanduser(backup_dir)

@@ -5,7 +5,7 @@ import re
 import sublime
 from subprocess import Popen
 
-import backups
+import backup_paths
 
 settings = sublime.load_settings('AutomaticBackups.sublime-settings')
 
@@ -34,7 +34,7 @@ class BackupsNavigator:
         self.current_file = fn
 
         (f, ext) = os.path.splitext(os.path.split(fn)[1])
-        self.backup_path = backups.get_backup_path(view.file_name())
+        self.backup_path = backup_paths.get_backup_path(view.file_name())
 
         dir_listing = os.listdir(self.backup_path)
 
