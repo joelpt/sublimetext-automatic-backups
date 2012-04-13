@@ -22,7 +22,7 @@ Once installed, any file you save will be automatically copied into your backups
 
 For example, if you change `C:\autoexec.bat` on Windows, you'll get a backup saved somewhere like:
 
-    C:\Users\yourUserName\My Documents\Sublime Text Backups\C\autoexec-2008-03-22-22-22-46.bat
+    C:\Users\yourUserName\My Documents\Sublime Text Backups\C\autoexec-2012-03-22-22-22-46.bat
 
 That end bit is the timestamp, so you can see when the file was edited.
 
@@ -30,7 +30,7 @@ To change where the backups are stored, access the plugin's settings in `Prefere
 
 To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
-    Backup saved to: D:\backups\C\autoexec-2008-03-22-22-22-46.bat
+    Backup saved to: /home/stanislav/sublime-backup/etc/hosts-2012-03-22-22-22-46
 
 
 ## Backup history navigation
