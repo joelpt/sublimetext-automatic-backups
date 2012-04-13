@@ -1,0 +1,26 @@
+{
+    // Don't make changes to this file directly as they can get wiped out when the
+    // plugin is updated. Instead transfer what you need to the 'Settings - User' file.
+
+    // The directory where we'll keep our backups. If empty, we'll try to put them in
+    // My Documents/Sublime Text Backups (Windows) or ~/sublime_backups (Linux/OSX).
+    "backup_dir": "",
+
+    // External command to execute when Merge command is used (Ctrl+Alt+Shift+M by default).
+    "backup_merge_command": ""
+
+    // For the above, the following tokens will be replaced with their corresponding values:
+    //
+    //   {oldfilepath} - full filepath to the backup (older) file
+    //   {oldfilename} - filename of the backup (older) file
+    //   {curfilepath} - full filepath to the current (newer) file
+    //   {curfilename} - filename of the current (newer) file
+    //
+    // Take care to surround path and file arguments with \" to enclose them in double quotes.
+    //
+    // Example of "backup_merge_command" for WinMerge on Windows:
+    // "C:/Program Files/WinMerge/WinMerge.exe /e /wr /s /x /ul /ur /dr \"{oldfilename}\" \"{curfilepath}\" \"{oldfilepath}\""
+    //
+    // Example of "backup_merge_command" for Beyond Compare 3 on Windows:
+    // "C:/Program Files (x86)/Beyond Compare 3/BComp.exe \"{oldfilepath}\" \"{curfilepath}\""
+}

@@ -1,0 +1,7 @@
+[
+    { "caption": "Automatic Backups: Step forward in history", "command": "automatic_backups", "args": { "command": "step", "forward": true }},
+    { "caption": "Automatic Backups: Step backward in history", "command": "automatic_backups", "args": { "command": "step", "forward": false }},
+    { "caption": "Automatic Backups: Step to start of history", "command": "automatic_backups", "args": { "command": "jump", "forward": true }},
+    { "caption": "Automatic Backups: Step to end of history", "command": "automatic_backups", "args": { "command": "jump", "forward": false }},
+    { "caption": "Automatic Backups: Merge viewed history file with latest", "command": "automatic_backups", "args": { "command": "merge" }}
+]

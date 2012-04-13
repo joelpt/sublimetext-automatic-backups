@@ -1,0 +1,7 @@
+[
+    { "keys": ["ctrl+alt+]"], "command": "automatic_backups", "args": { "command": "step", "forward": true }},
+    { "keys": ["ctrl+alt+["], "command": "automatic_backups", "args": { "command": "step", "forward": false }},
+    { "keys": ["ctrl+alt+shift+]"], "command": "automatic_backups", "args": { "command": "jump", "forward": true }},
+    { "keys": ["ctrl+alt+shift+["], "command": "automatic_backups", "args": { "command": "jump", "forward": false }},
+    { "keys": ["ctrl+alt+shift+m"], "command": "automatic_backups", "args": { "command": "merge" }}
+]
