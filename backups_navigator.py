@@ -37,6 +37,7 @@ class BackupsNavigator:
         self.backup_path = backup_paths.get_backup_path(view.file_name())
 
         dir_listing = os.listdir(self.backup_path)
+        dir_listing.sort()
 
         date = '-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}'
         pattern = '%s%s%s' % (f, date, ext)
