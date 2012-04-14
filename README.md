@@ -18,7 +18,7 @@ If you prefer to install manually, install git, then:
 
 ## Basic usage
 
-Once installed, any file you save will be automatically copied into your backups folder (defaults to `My Documents\Sublime Text Backups` on Windows and `~/sublime_backups` on Linux/OSX).
+Once installed, any file you save will be automatically copied into your backups folder (defaults to `My Documents\Sublime Text Backups` on Windows and `~/.sublime/backups` on Linux/OSX).
 
 For example, if you change `C:\autoexec.bat` on Windows, you'll get a backup saved somewhere like:
 
@@ -30,7 +30,7 @@ To change where the backups are stored, access the plugin's settings in `Prefere
 
 To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
-    Backup saved to: /home/stanislav/sublime-backups/etc/hosts-2012-03-22-22-22-46
+    Backup saved to: /home/stanislav/.sublime/backups/etc/hosts-2012-03-22-22-22-46
 
 
 ## Backup history navigation

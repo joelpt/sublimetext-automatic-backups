@@ -28,7 +28,7 @@ def get_base_dir():
             'Sublime Text Backups')
 
     # Linux/OSX/other: ~/sublime_backups
-    return os.path.expanduser('~/sublime_backups')
+    return os.path.expanduser('~/.sublime/backups')
 
 
 def timestamp_file(filename):
