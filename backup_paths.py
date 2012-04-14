@@ -5,7 +5,8 @@ import os
 import re
 import datetime
 
-import win32helpers
+if sublime.platform() == 'windows':
+    import win32helpers
 
 settings = sublime.load_settings('AutomaticBackups.sublime-settings')
 
