@@ -81,16 +81,22 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
             else:
                 nav.nav_start()
 
-        if nav.found_backup_files:
-            if nav.at_last_backup():
-                if command != 'merge' and not nav.just_reverted:
-                    nav.revert(self.view)
-            else:
-                nav.backup = nav.found_backup_files[nav.index]
-                nav.backup_full_path = os.path.join(nav.backup_path,
-                        nav.backup)
+        if not nav.found_backup_files:
+            if command == 'merge':
+                sublime.error_message('Navigate to an older automatic backup of this file before merging.')
+                return
+            sublime.status_message('No automatic backups found to navigate to')
+            return
 
-                if command == 'merge':
-                    nav.merge(self.view)
-                else:
-                    nav.load_backup_to_view(self.view, edit)
+        if nav.at_last_backup():
+            if command != 'merge' and not nav.just_reverted:
+                nav.revert(self.view)
+        else:
+            nav.backup = nav.found_backup_files[nav.index]
+            nav.backup_full_path = os.path.join(nav.backup_path,
+                    nav.backup)
+
+            if command == 'merge':
+                nav.merge(self.view)
+            else:
+                nav.load_backup_to_view(self.view, edit)

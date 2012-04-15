@@ -101,7 +101,7 @@ class BackupsNavigator:
         if not merge_cmd:
             sublime.error_message(
                 'Merge command is not set.\n' +
-                'Set one in Preferences->Package Settings->Automatic Backups.')
+                'Set one in Preferences->Package Settings->AutomaticBackups.')
             return
 
         cmd = merge_cmd.format(

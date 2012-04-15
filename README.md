@@ -1,5 +1,5 @@
-Automatic Backups for Sublime Text 2
-====================================
+AutomaticBackups for Sublime Text 2
+===================================
 
 A Sublime Text 2 plugin to automatically save off a backup of your files each time you save.
 
@@ -10,11 +10,11 @@ When you edit text files (scripts, prose, whatever) you often find yourself wish
 
  * Install [Package Manager][1].
  * Use `Cmd+Shift+P` or `Ctrl+Shift+P` then `Package Control: Install Package`.
- * Look for `Automatic Backups` and install it.
+ * Look for `AutomaticBackups` and install it.
 
 If you prefer to install manually, install git, then:
 
-    git clone https://github.com/joelpt/sublimetext-automatic-backups "<Sublime Text 2 Packages folder>/Automatic Backups"
+    git clone https://github.com/joelpt/sublimetext-automatic-backups "<Sublime Text 2 Packages folder>/AutomaticBackups"
 
 ## Basic usage
 
@@ -26,7 +26,7 @@ For example, if you change `C:\autoexec.bat` on Windows, you'll get a backup sav
 
 That end bit is the timestamp, so you can see when the file was edited.
 
-To change where the backups are stored, access the plugin's settings in `Preferences->Package Settings->Automatic Backups`.
+To change where the backups are stored, access the plugin's settings in `Preferences->Package Settings->AutomaticBackups`.
 
 To see if it's working, open the console with the `View->Show Console` menu item. When you save a file, you should see a line like this, indicating that the file has been backed up:
 
@@ -35,7 +35,7 @@ To see if it's working, open the console with the `View->Show Console` menu item
 
 ## Backup history navigation
 
-Automatic Backups supports easy navigation through the backup history for any file with stored backups. To use this feature:
+AutomaticBackups supports easy navigation through the backup history for any file with stored backups. To use this feature:
 
  * Press `Ctrl+Alt+[` to navigate backwards one step through a file's backup history.
  * Press `Ctrl+Alt+]` to navigate forwards one step.
@@ -49,7 +49,7 @@ These commands can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 When viewing a backup file via backup history navigation, press `Ctrl+Alt+Shift+M` to merge the backup version you're currently viewing with the latest version of the file using an external merge tool of your choosing.
 
-You'll need to specify the command line for this merge tool; for more information go to `Preferences->Package Settings->Automatic Backups->Settings - Default`.
+You'll need to specify the command line for this merge tool; for more information go to `Preferences->Package Settings->AutomaticBackups->Settings - Default`.
 
 This command can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
@@ -58,7 +58,7 @@ This command can also be accessed via `Ctrl+Shift+P` or `Cmd+Shift+P`.
 
 Though this plugin currently has no facility for pruning old backups, this probably won't be a problem for you. I have been running some form of this plugin for 2.5 years, and have a total of 27000 individual backup files stored totalling just 400 MB uncompressed. And I can go back to the very first version of any file I've edited in Sublime Text.
 
-To prevent your backup folder from growing too large, check out the `max_backup_file_size_bytes` setting in `Preferences->Package Settings->Automatic Backups`.
+To prevent your backup folder from growing too large, check out the `max_backup_file_size_bytes` setting in `Preferences->Package Settings->AutomaticBackups`.
 
 
 ## Credits
