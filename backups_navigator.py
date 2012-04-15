@@ -7,7 +7,7 @@ from subprocess import Popen
 
 import backup_paths
 
-settings = sublime.load_settings('AutomaticBackups.sublime-settings')
+settings = sublime.load_settings('Automatic Backups.sublime-settings')
 
 
 class BackupsNavigator:
@@ -101,7 +101,7 @@ class BackupsNavigator:
         if not merge_cmd:
             sublime.error_message(
                 'Merge command is not set.\n' +
-                'Set one in Preferences->Package Settings->AutomaticBackups.')
+                'Set one in Preferences->Package Settings->Automatic Backups.')
             return
 
         cmd = merge_cmd.format(

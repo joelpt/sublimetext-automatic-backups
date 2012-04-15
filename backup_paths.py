@@ -8,7 +8,7 @@ import datetime
 if sublime.platform() == 'windows':
     import win32helpers
 
-settings = sublime.load_settings('AutomaticBackups.sublime-settings')
+settings = sublime.load_settings('Automatic Backups.sublime-settings')
 
 
 def get_base_dir():

@@ -10,20 +10,20 @@
                 "children":
                 [
                     {
-                        "caption": "AutomaticBackups",
+                        "caption": "Automatic Backups",
                         "children":
                         [
                             {
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/AutomaticBackups/AutomaticBackups.sublime-settings"
+                                    "file": "${packages}/Automatic Backups/Automatic Backups.sublime-settings"
                                 },
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/User/AutomaticBackups.sublime-settings"
+                                    "file": "${packages}/User/Automatic Backups.sublime-settings"
                                 },
                                 "caption": "Settings – User"
                             },
@@ -31,7 +31,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/AutomaticBackups/Default (Windows).sublime-keymap",
+                                    "file": "${packages}/Automatic Backups/Default (Windows).sublime-keymap",
                                     "platform": "Windows"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -39,7 +39,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/AutomaticBackups/Default (OSX).sublime-keymap",
+                                    "file": "${packages}/Automatic Backups/Default (OSX).sublime-keymap",
                                     "platform": "OSX"
                                 },
                                 "caption": "Key Bindings – Default"
@@ -47,7 +47,7 @@
                             {
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/AutomaticBackups/Default (Linux).sublime-keymap",
+                                    "file": "${packages}/Automatic Backups/Default (Linux).sublime-keymap",
                                     "platform": "Linux"
                                 },
                                 "caption": "Key Bindings – Default"

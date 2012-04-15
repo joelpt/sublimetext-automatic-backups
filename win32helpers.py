@@ -6,7 +6,7 @@ try:
     import _winreg
 except ImportError:
     if sublime.platform() == 'windows':
-        sublime.error_message('There was an error importing the _winreg module required by the AutomaticBackups plugin.')
+        sublime.error_message('There was an error importing the _winreg module required by the Automatic Backups plugin.')
 
 def _substenv(m):
     return os.environ.get(m.group(1), m.group(0))

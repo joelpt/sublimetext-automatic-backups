@@ -9,7 +9,7 @@ import backup_paths
 from backups_navigator import BackupsNavigator
 
 nav = BackupsNavigator()  # our backup navigator state manager
-settings = sublime.load_settings('AutomaticBackups.sublime-settings')
+settings = sublime.load_settings('Automatic Backups.sublime-settings')
 
 
 class AutomaticBackupsEventListener(sublime_plugin.EventListener):
