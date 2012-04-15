@@ -86,11 +86,14 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
             return
 
         if nav.at_last_backup():
-            if command != 'merge' and not nav.just_reverted:
-                nav.revert(self.view)
-            else:
+            if command == 'merge':
                 sublime.error_message('You are viewing the current version of this file.\nNavigate to a backup version before merging.')
                 return
+            if nav.just_reverted:
+                sublime.status_message('Showing current version')
+            else:
+                nav.revert(self.view)
+            return
 
         nav.backup = nav.found_backup_files[nav.index]
         nav.backup_full_path = os.path.join(nav.backup_path,
