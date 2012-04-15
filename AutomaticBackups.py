@@ -87,7 +87,7 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
 
         if nav.at_last_backup():
             if command == 'merge':
-                sublime.error_message('You are viewing the current version of this file.\nNavigate to a backup version before merging.')
+                sublime.error_message('You are viewing the current version of this file. Navigate to a backup version before merging.')
                 return
             if nav.just_reverted:
                 sublime.status_message('Showing current version')
