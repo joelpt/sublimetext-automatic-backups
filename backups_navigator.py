@@ -81,8 +81,12 @@ class BackupsNavigator:
 
             data = old_file.read()
 
+            current_encoding = view.encoding()
+            if current_encoding == 'Western (Windows 1252)':
+                current_encoding = 'windows-1252'
+
             try:
-                unicoded = unicode(data)
+                unicoded = unicode(data, current_encoding)
             except UnicodeDecodeError:
                 unicoded = unicode(data, 'latin-1')  # should always work
 
