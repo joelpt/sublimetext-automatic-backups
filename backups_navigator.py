@@ -84,6 +84,8 @@ class BackupsNavigator:
             current_encoding = view.encoding()
             if current_encoding == 'Western (Windows 1252)':
                 current_encoding = 'windows-1252'
+            elif current_encoding == 'Undefined':
+                current_encoding = 'utf-8'
 
             try:
                 unicoded = unicode(data, current_encoding)
