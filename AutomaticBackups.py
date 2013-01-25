@@ -49,7 +49,33 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
         if view.file_name() != nav.current_file:
             nav.reinit()
 
+    """Creates an automatic backup of every file you open. This
+    gives you a rudimentary mechanism for making sure you don't lose
+    information while working."""
+
     def on_load(self, view):
+        """When a file is opened, put a copy of the file into the
+        backup directory."""
+
+        # don't save files above configured size
+        if view.size() > settings.get("max_backup_file_size_bytes"):
+            print 'Backup not saved, file too large (%d bytes)' % view.size()
+            return
+
+        filename = view.file_name()
+        newname = backup_paths.get_backup_filepath(filename)
+        if newname == None:
+            return
+
+        (backup_dir, file_to_write) = os.path.split(newname)
+
+        # make sure that we have a directory to write into
+        if os.access(backup_dir, os.F_OK) == False:
+            os.makedirs(backup_dir)
+
+        shutil.copy(filename, newname)
+        print 'Backup saved to:', newname
+
         nav.reinit()
 
 
