@@ -5,9 +5,9 @@ import re
 import sublime
 from subprocess import Popen
 
-import backup_paths
+from . import backup_paths
 
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
+settings = None
 
 
 class BackupsNavigator:
@@ -43,9 +43,10 @@ class BackupsNavigator:
         pattern = '%s%s%s' % (f, date, ext)
         matcher = re.compile(pattern)
 
-        self.found_backup_files = filter(lambda x: matcher.match(x),
-                dir_listing)
-
+        self.found_backup_files = list(filter(lambda x: matcher.match(x),
+                dir_listing))
+        print ('_________ ____ __')
+        print ( list(self.found_backup_files))
         self.index = len(self.found_backup_files) - 1
 
     def nav_forwards(self):
@@ -76,23 +77,24 @@ class BackupsNavigator:
         """Replaces contents of view with navigator's current backup file."""
         pos = view.viewport_position()
 
-        with file(self.backup_full_path) as old_file:
+        with open(self.backup_full_path, 'r', encoding='utf-8') as old_file:
             view.erase(edit, sublime.Region(0, view.size()))
 
             data = old_file.read()
 
-            current_encoding = view.encoding()
-            if current_encoding == 'Western (Windows 1252)':
-                current_encoding = 'windows-1252'
-            elif current_encoding == 'Undefined':
-                current_encoding = 'utf-8'
+            # current_encoding = view.encoding()
+            # if current_encoding == 'Western (Windows 1252)':
+            #     current_encoding = 'windows-1252'
+            # elif current_encoding == 'Undefined':
+            #     current_encoding = 'utf-8'
 
-            try:
-                unicoded = unicode(data, current_encoding)
-            except UnicodeDecodeError:
-                unicoded = unicode(data, 'latin-1')  # should always work
+            # try:
+            #     unicoded = str(data, current_encoding)
+            # except UnicodeDecodeError:
+            #     unicoded = str(data, 'latin-1')  # should always work
 
-            view.insert(edit, 0, unicoded)
+            # view.insert(edit, 0, unicoded)
+            view.insert(edit, 0, data)
 
         sublime.status_message('%s [%s of %s]' % (self.backup,
                                self.index + 1,
@@ -116,7 +118,6 @@ class BackupsNavigator:
            curfilename=os.path.split(self.current_file)[1],
            curfilepath=self.current_file)
         sublime.status_message('Launching external merge tool')
-
         try:
             Popen(cmd)
         except Exception as e:
@@ -126,7 +127,7 @@ class BackupsNavigator:
                 'Error given was:\n' + e.strerror + '\n\n' +
                 'Check View->Show Console to view the command line that failed.'
             )
-            print 'Attempted to execute:\n' + cmd
+            print ('Attempted to execute:\n' + cmd)
 
 
 def do_revert(view):
@@ -145,3 +146,7 @@ def reposition_view(view, pos):
     # things vs. just giving it the same pos again.
     view.set_viewport_position((pos[0], pos[1] + 1))
     view.set_viewport_position((pos[0], pos[1] + 0))
+
+def plugin_loaded():
+    global settings
+    settings = sublime.load_settings('Automatic Backups.sublime-settings')
