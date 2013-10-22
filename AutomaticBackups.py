@@ -1,15 +1,15 @@
-# Sublime Text 2 event listeners and commands interface for automatic backups.
-
+# Sublime Text 2 event l# Sublime Text 2 event listeners and commands interface for automatic backups.
+#
 import sublime
 import sublime_plugin
 import os
 import shutil
 
-import backup_paths
-from backups_navigator import BackupsNavigator
+from . import backup_paths
+from .backups_navigator import BackupsNavigator
 
 nav = BackupsNavigator()  # our backup navigator state manager
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
+settings = None
 
 
 class AutomaticBackupsEventListener(sublime_plugin.EventListener):
@@ -17,6 +17,7 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
     """Creates an automatic backup of every file you save. This
     gives you a rudimentary mechanism for making sure you don't lose
     information while working."""
+
 
     def on_post_save(self, view):
         """When a file is saved, put a copy of the file into the
@@ -41,7 +42,7 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
 
         # don't save files above configured size
         if view.size() > settings.get("max_backup_file_size_bytes"):
-            print 'Backup not saved, file too large (%d bytes)' % view.size()
+            print ('Backup not saved, file too large (%d bytes)' % view.size())
             return
 
         filename = view.file_name()
@@ -56,7 +57,7 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
             os.makedirs(backup_dir)
 
         shutil.copy(filename, newname)
-        print 'Backup saved to:', newname
+        print ('Backup saved to:', newname)
 
         nav.reinit()
 
@@ -111,3 +112,9 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
             nav.merge(self.view)
         else:
             nav.load_backup_to_view(self.view, edit)
+
+
+def plugin_loaded():
+    global settings
+    settings = sublime.load_settings('Automatic Backups.sublime-settings')
+

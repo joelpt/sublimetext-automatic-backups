@@ -8,7 +8,7 @@ import datetime
 if sublime.platform() == 'windows':
     import win32helpers
 
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
+settings = None
 
 
 def get_base_dir():
@@ -72,3 +72,7 @@ def get_backup_filepath(filepath):
     for filepath. Filename in file path returned will be timestamped."""
     filename = os.path.split(filepath)[1]
     return os.path.join(get_backup_path(filepath), timestamp_file(filename))
+
+def plugin_loaded():
+    global settings
+    settings = sublime.load_settings('Automatic Backups.sublime-settings')
