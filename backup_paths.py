@@ -5,11 +5,10 @@ import os
 import re
 import datetime
 
+from .settings import get_settings
+
 if sublime.platform() == 'windows':
-    import win32helpers
-
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
-
+    from .win32helpers import get_my_documents
 
 def get_base_dir():
     """Returns the base dir for where we should store backups.
@@ -17,15 +16,13 @@ def get_base_dir():
     based on the user's OS."""
 
     # Configured setting
-    backup_dir = settings.get('backup_dir', '')
+    backup_dir = get_settings().get('backup_dir', '')
     if backup_dir != '':
         return os.path.expanduser(backup_dir)
 
     # Windows: <user folder>/My Documents/Sublime Text Backups
     if sublime.platform() == 'windows':
-        return os.path.join(
-            win32helpers.get_shell_folder('Personal'),
-            'Sublime Text Backups')
+        return os.path.join(get_my_documents(), 'Sublime Text Backups')
 
     # Linux/OSX/other: ~/sublime_backups
     return os.path.expanduser('~/.sublime/backups')

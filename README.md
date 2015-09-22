@@ -1,12 +1,14 @@
-Automatic Backups for Sublime Text 2
-====================================
+Automatic Backups for Sublime Text 2/3
+======================================
 
-A Sublime Text 2 plugin to automatically save off a backup of your files each time you save.
+A Sublime Text 2/3 plugin to automatically save off a backup of your files each time you save.
 
 When you edit text files (scripts, prose, whatever) you often find yourself wishing for an older version. Ever accidentally deleted a chunk from an important configuration file, or wished you could roll back a document a few hours? This plugin takes a copy of every file you save and copies it into a backup directory structure, ensuring that you never lose an old version of a file.
 
 
 ## Installation
+
+### For Sublime Text 3
 
  * Install [Package Manager][1].
  * Use `Cmd+Shift+P` or `Ctrl+Shift+P` then `Package Control: Install Package`.
@@ -14,7 +16,18 @@ When you edit text files (scripts, prose, whatever) you often find yourself wish
 
 If you prefer to install manually, install git, then:
 
-    git clone https://github.com/joelpt/sublimetext-automatic-backups "<Sublime Text 2 Packages folder>/Automatic Backups"
+    git clone https://github.com/joelpt/sublimetext-automatic-backups "<Sublime Text 3 Packages folder>/Automatic Backups"
+
+### For Sublime Text 2
+
+If you're still using Sublime Text 2, you can still install the last version of this plugin that works for ST2.
+
+Install git, then:
+
+	cd "<Sublime Text 2 Packages folder>"
+    git clone https://github.com/joelpt/sublimetext-automatic-backups "Automatic Backups"
+    cd "Automatic Backups"
+    git checkout 2deaf6ac4
 
 ## Basic usage
 

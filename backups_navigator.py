@@ -5,9 +5,9 @@ import re
 import sublime
 from subprocess import Popen
 
-import backup_paths
+from .backup_paths import get_backup_path
 
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
+from .settings import get_settings
 
 
 class BackupsNavigator:
@@ -34,7 +34,7 @@ class BackupsNavigator:
         self.current_file = fn
 
         (f, ext) = os.path.splitext(os.path.split(fn)[1])
-        self.backup_path = backup_paths.get_backup_path(view.file_name())
+        self.backup_path = get_backup_path(view.file_name())
 
         dir_listing = os.listdir(self.backup_path)
         dir_listing.sort()
@@ -42,9 +42,9 @@ class BackupsNavigator:
         date = r'-[0-9]{4}-[0-9]{2}-[0-9]{2}[_\-][0-9]{2}-[0-9]{2}-[0-9]{2}'
         pattern = '%s%s%s' % (f, date, ext)
         matcher = re.compile(pattern)
-
-        self.found_backup_files = filter(lambda x: matcher.match(x),
-                dir_listing)
+        
+        self.found_backup_files = list(filter(lambda x: matcher.match(x),
+                dir_listing))
 
         self.index = len(self.found_backup_files) - 1
 
@@ -76,23 +76,13 @@ class BackupsNavigator:
         """Replaces contents of view with navigator's current backup file."""
         pos = view.viewport_position()
 
-        with file(self.backup_full_path) as old_file:
-            view.erase(edit, sublime.Region(0, view.size()))
+        old_file = open(self.backup_full_path)
 
-            data = old_file.read()
+        view.erase(edit, sublime.Region(0, view.size()))
 
-            current_encoding = view.encoding()
-            if current_encoding == 'Western (Windows 1252)':
-                current_encoding = 'windows-1252'
-            elif current_encoding == 'Undefined':
-                current_encoding = 'utf-8'
+        data = old_file.read()
 
-            try:
-                unicoded = unicode(data, current_encoding)
-            except UnicodeDecodeError:
-                unicoded = unicode(data, 'latin-1')  # should always work
-
-            view.insert(edit, 0, unicoded)
+        view.insert(edit, 0, data)
 
         sublime.status_message('%s [%s of %s]' % (self.backup,
                                self.index + 1,
@@ -102,7 +92,7 @@ class BackupsNavigator:
 
     def merge(self, view):
         """Perform a merge with an external tool defined in settings."""
-        merge_cmd = settings.get('backup_merge_command')
+        merge_cmd = get_settings().get('backup_merge_command')
 
         if not merge_cmd:
             sublime.error_message(
@@ -126,7 +116,7 @@ class BackupsNavigator:
                 'Error given was:\n' + e.strerror + '\n\n' +
                 'Check View->Show Console to view the command line that failed.'
             )
-            print 'Attempted to execute:\n' + cmd
+            print('Attempted to execute:\n' + cmd)
 
 
 def do_revert(view):
@@ -140,7 +130,7 @@ def reposition_view(view, pos):
     """Set viewport's scroll position in view to pos."""
     # I don't know why this works, but it does: Setting viewport to just pos
     # makes it scroll to the top of the buffer. Setting it to +1 then +0
-    # position works. Probably something to do with ST2 getting confused that
+    # position works. Probably something to do with ST getting confused that
     # the buffer changed and giving it a different pos causes it to resync
     # things vs. just giving it the same pos again.
     view.set_viewport_position((pos[0], pos[1] + 1))

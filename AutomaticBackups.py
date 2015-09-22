@@ -1,16 +1,15 @@
-# Sublime Text 2 event listeners and commands interface for automatic backups.
+# Sublime Text event listeners and commands interface for automatic backups.
 
 import sublime
 import sublime_plugin
 import os
 import shutil
 
-import backup_paths
-from backups_navigator import BackupsNavigator
+from .backup_paths import get_backup_filepath
+from .backups_navigator import BackupsNavigator
+from .settings import get_settings
 
 nav = BackupsNavigator()  # our backup navigator state manager
-settings = sublime.load_settings('Automatic Backups.sublime-settings')
-
 
 class AutomaticBackupsEventListener(sublime_plugin.EventListener):
 
@@ -25,13 +24,14 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
 
     def on_activated(self, view):
         """Reinit backups navigator on view activation, just in case
-        file was modified outside of ST2."""
+        file was modified outside of ST."""
         if view.file_name() != nav.current_file:
             nav.reinit()
 
     def on_load(self, view):
         """When a file is opened, put a copy of the file into the
         backup directory if backup_on_open_file setting is true."""
+        settings = get_settings()
         if settings.get('backup_on_open_file', False):
             self.save_view_to_backup(view)
 
@@ -39,13 +39,15 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
         """When a file is opened, put a copy of the file into the
         backup directory."""
 
+        settings = get_settings()
+
         # don't save files above configured size
-        if view.size() > settings.get("max_backup_file_size_bytes"):
-            print 'Backup not saved, file too large (%d bytes)' % view.size()
+        if view.size() > settings.get("max_backup_file_size_bytes", 131072):
+            print('Backup not saved, file too large (%d bytes)' % view.size())
             return
 
         filename = view.file_name()
-        newname = backup_paths.get_backup_filepath(filename)
+        newname = get_backup_filepath(filename)
         if newname == None:
             return
 
@@ -56,7 +58,7 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
             os.makedirs(backup_dir)
 
         shutil.copy(filename, newname)
-        print 'Backup saved to:', newname
+        print('Backup saved to:', newname)
 
         nav.reinit()
 
@@ -70,6 +72,8 @@ class AutomaticBackupsCommand(sublime_plugin.TextCommand):
         return self.view.file_name() is not None
 
     def run(self, edit, **kwargs):
+        settings = get_settings()
+
         command = kwargs['command']
 
         if command in ('jump', 'step'):
