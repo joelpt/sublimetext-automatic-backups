@@ -1,7 +1,7 @@
 Automatic Backups for Sublime Text 2/3
 ======================================
 
-A Sublime Text 2/3 plugin to automatically save off a backup of your files each time you save.
+A Sublime Text 3 (and 2, see below) plugin to automatically save off a backup of your files each time you save.
 
 When you edit text files (scripts, prose, whatever) you often find yourself wishing for an older version. Ever accidentally deleted a chunk from an important configuration file, or wished you could roll back a document a few hours? This plugin takes a copy of every file you save and copies it into a backup directory structure, ensuring that you never lose an old version of a file.
 
