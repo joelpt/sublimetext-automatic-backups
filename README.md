@@ -1,5 +1,5 @@
-Automatic Backups for Sublime Text 2/3
-======================================
+Automatic Backups for Sublime Text
+==================================
 
 A Sublime Text 2/3 plugin to automatically save off a backup of your files each time you save.
 
