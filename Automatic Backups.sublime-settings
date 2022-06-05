@@ -11,6 +11,7 @@
 
     // If true, also save a backup copy any time a file is opened
     "backup_on_open_file": false,
+    "backup_on_open__initial_only": false,
 
     // External command to execute when Merge command is used (Ctrl+Alt+Shift+M by default).
     "backup_merge_command": ""

@@ -30,9 +30,19 @@ class AutomaticBackupsEventListener(sublime_plugin.EventListener):
 
     def on_load(self, view):
         """When a file is opened, put a copy of the file into the
-        backup directory if backup_on_open_file setting is true."""
+        backup directory if backup_on_open_file setting is true. Optionally, 
+        only perform backup on open initially (ie no backups yet exists) by 
+        setting backup_on_open__initial_only to true."""
+
         settings = get_settings()
+
         if settings.get('backup_on_open_file', False):
+            if settings.get('backup_on_open__initial_only', False):
+                nav.find_backups(view)
+                if nav.found_backup_files:
+                    print ("Backup not saved, 'backup_on_open__initial_only' is"
+                           " true and a backup already exists.")
+                    return
             self.save_view_to_backup(view)
 
     def save_view_to_backup(self, view):
